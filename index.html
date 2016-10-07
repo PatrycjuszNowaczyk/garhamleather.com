@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pl" class="no_bars">
+<head>
+    <title>GARHAM ver. 0.0.1</title>
+    <link rel="icon" type="image/png" href="img/logo/favicon.png" >
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8" >
+    <meta name="keywords" content="skóra, torba, portfel, craft, poznań, warszawa," >
+    <meta name="description" content="Leather goods from Poland since 2015" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="author" content="Marcin Kaczmarek and Patrycjusz Nowaczyk" >
+    <meta property="og:title" content="GARHAM" > 
+    <meta property="og:description" content="Leather goods from Poland since 2015" >
+    <meta property="og:image" content="http://garhamleather.com/img/fb.jpg" >
+    <meta property="og:url" content="http://garhamleather.com" >
+
+    <link rel='shortlink' href='http://garhamleather.com/' >
+    <link rel="alternate" href="http://garhamleather.com/pl" hreflang="pl" >
+    <link rel="alternate" href="http://garhamleather.com/en" hreflang="en" >
+    <link rel="alternate" href="http://garhamleather.com/" hreflang="x-default" >
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+
+
+</head>
+
+<body onload="document.body.style.opacity='1'">
+    <!--background--------------------------->
+    <div class="fullscreen">
+        <video loop autoplay poster="img/background_and_poster.jpg" class="fullscreen_video">
+            <source src="img/garham_video.mp4" type="video/mp4">
+        </video>
+    </div>
+    <!--begin-------------------------------->
+    <div id="container">
+<!--PRZYCISK LANG
+        <a href="#" class="lang nav_index">EN</a>
+-->
+        <!--header------------------------------->
+        <header id="header">
+            <a href="pl/sklep.html"><img src="img/logo/logo_garham.svg" class="logo anim fadeInDown" style="z-index:999999;"></a>
+            <nav class="nav_index">
+                <ul id="menu">
+                    <li class="menu-collection"><a class="index" href="pl/kolekcja.html">Kolekcja</a></li>
+                    <li class="menu-shop"><a class="index" href="pl/sklep.html">Sklep</a></li>
+                    <li class="menu-aboutus"><a class="index" href="pl/onas.html">O nas</a></li>
+                    <li class="menu-contact"><a class="index" href="pl/kontakt.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+
+<!-- Navigation -->
+<div class="b-nav">
+    <li><a class="b-link" href="pl/kolekcja.html">Kolekcja</a></li>
+    <li><a class="b-link" href="pl/sklep.html">Sklep</a></li>
+    <li><a class="b-link" href="pl/onas.html">O nas</a></li>
+    <li><a class="b-link" href="pl/kontakt.html">Kontakt</a></li>
+</div>
+
+<!-- Burger-Icon -->
+<div class="b-container">
+    <div class="b-menu">
+        <div class="b-bun b-bun--top"></div>
+        <div class="b-bun b-bun--mid"></div>
+        <div class="b-bun b-bun--bottom"></div>
+    </div>
+</div>
+
+
+    <!--scripts------------------------------>
+    <!--burger------------------------------->
+<script>
+    'use strict';
+
+(function() {
+  var body = document.body;
+  var burgerMenu = document.getElementsByClassName('b-menu')[0];
+  var burgerContain = document.getElementsByClassName('b-container')[0];
+  var burgerNav = document.getElementsByClassName('b-nav')[0];
+
+  burgerMenu.addEventListener('click', function toggleClasses() {
+    [body, burgerContain, burgerNav].forEach(function (el) {
+      el.classList.toggle('open');
+    });
+  }, false);
+})();
+</script>
+    <!--mousemove---------------------------->
+    <script>
+var timer;
+
+$(window).on('mousemove', function () {
+  $('.nav_index').addClass('show');
+  try {
+    clearTimeout(timer);
+  } catch (e) {}
+  timer = setTimeout(function () {
+    $('.nav_index').removeClass('show');
+  }, 1000);
+});
+</script>
+    <!--swiper------------------------------->
+    <script>
+       $(".swiper-container").each(function(index, element){
+       var $this = $(this);
+       $this.addClass("instance-" + index);
+       $this.find(".swiper-button-prev").addClass("btn-prev-" + index);
+        $this.find(".swiper-button-next").addClass("btn-next-" + index);
+    $this.find(".swiper-pagination").addClass("pagina" + index);
+       var swiper = new Swiper(".instance-" + index, {
+        nextButton: $this.find(".swiper-button-next")[0],
+        prevButton: $this.find(".swiper-button-prev")[0],
+    pagination: $this.find(".swiper-pagination")[0],
+        paginationType: 'fraction',
+        effect: 'fade',
+    });
+    });
+</script>
+    <!--Animate----------------->
+    <script>
+
+$(document).ready(function() {
+	var waypointClass = '.anim';
+	var delayTime;
+	$(waypointClass).css({opacity: '0'});
+	
+	$(waypointClass).waypoint(function() {
+		delayTime += 3;
+		$(this).delay(delayTime).queue(function(next){
+			$(this).toggleClass('animated');
+			$(this).toggleClass('fadeInUp');
+			delayTime = 0;
+			next();
+		});
+	},
+	{
+		offset: '95%',
+		triggerOnce: true
+	});
+});
+</script>
+<!--Scroll--------------------------------->
+    <script>
+    $(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+</script>
+</body>
+
+</html>
